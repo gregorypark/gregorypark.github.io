@@ -5,96 +5,162 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gregory Park</title>
     <style>
-        body {
-            font-family: Georgia, Times, Times New Roman, serif;
-            max-width: 800px;
-            margin: 50px auto;
-            padding: 0 40px;
-            line-height: 1.7;
-            color: #1a1a1a;
-        }
-        
-        h1 {
-            font-size: 2em;
-            font-weight: 400;
-            margin-bottom: 8px;
-            color: #111;
-        }
-        
-        .subtitle {
-            color: #666;
-            font-size: 0.95em;
-            margin-bottom: 25px;
-        }
-        
-        h2 {
-            font-size: 1.15em;
-            font-weight: 600;
-            margin-top: 35px;
-            margin-bottom: 15px;
-            color: #222;
-            border-bottom: 1px solid #ddd;
-            padding-bottom: 5px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-        
-        a {
-            color: #0066cc;
-            text-decoration: none;
-            border-bottom: 1px solid transparent;
-            transition: border-bottom 0.2s;
-        }
-        
-        a:hover {
-            border-bottom: 1px solid #0066cc;
+        body{
+            font-family:Georgia, 'Times New Roman', Times, serif;
+            max-width:800px;
+            margin:0 auto;
+            padding:0 40px 60px;
+            line-height:1.7;
+            color:#1a1a1a;
+            background:#ffffff;
         }
 
-        ul {
-            margin: 0;
-            padding-left: 20px;
+        .top-rule{
+            border:none;
+            border-top:1px solid #999;
+            margin:0 -40px 0;
         }
 
-        ul li {
-            margin-bottom: 6px;
+        .profile-header{
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            gap:30px;
+            flex-wrap:wrap;
+            margin:55px 0 45px;
         }
-        
-        .links {
-            margin-top: 30px;
-            padding-top: 20px;
-            border-top: 1px solid #ddd;
+
+        /* ===== photo slot =====
+           Drop a file named profile.jpg in the same folder as this page
+           and it will appear here automatically. Until then, a plain
+           placeholder shows so you can see the frame. A roughly square
+           crop looks best here. */
+        .photo-frame{
+            width:170px;
+            height:170px;
+            flex:0 0 auto;
+            border:1px solid #ccc;
+            background:#f7f7f7;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            overflow:hidden;
         }
-        
-        .links a {
-            margin-right: 20px;
-            font-weight: 600;
-            font-size: 0.95em;
+        .photo-frame img{
+            width:100%;
+            height:100%;
+            object-fit:cover;
+            display:block;
+        }
+        .photo-frame .photo-placeholder{
+            display:none;
+            font-size:0.75em;
+            color:#888;
+            text-align:center;
+            padding:14px;
+        }
+        .photo-frame.no-photo .photo-placeholder{ display:block; }
+        /* ===== end photo slot ===== */
+
+        .intro{ text-align:center; }
+
+        h1{
+            font-size:1.7em;
+            font-weight:400;
+            margin:0 0 10px;
+            color:#111;
+        }
+        .role{
+            margin:2px 0;
+            color:#333;
+            font-size:0.95em;
+        }
+        .contact{
+            margin-top:14px;
+            font-size:0.9em;
+        }
+
+        main p{ margin-bottom:18px; }
+
+        h2{
+            font-size:1.15em;
+            font-weight:600;
+            margin-top:35px;
+            margin-bottom:15px;
+            color:#222;
+        }
+
+        a{
+            color:#0066cc;
+            text-decoration:none;
+            border-bottom:1px solid transparent;
+            transition:border-bottom 0.2s;
+        }
+        a:hover{ border-bottom:1px solid #0066cc; }
+
+        ul{ margin:0; padding-left:20px; }
+        ul li{ margin-bottom:6px; }
+
+        .bottom-rule{
+            border:none;
+            border-top:1px solid #999;
+            margin:45px 0 25px;
+        }
+
+        .links{ text-align:center; }
+        .links a{
+            margin:0 14px;
+            font-weight:600;
+            font-size:0.95em;
+        }
+
+        @media (max-width:560px){
+            .profile-header{ flex-direction:column; }
+            .photo-frame{ width:150px; height:150px; }
         }
     </style>
 </head>
 <body>
-    <h1>Gregory Park</h1>
-    <p class="subtitle">Economics & Math • University of Maryland, College Park • 2028</p>
-    
-    <h2>About</h2>
-    <p>My name is Greg, and I am a sophomore at UMD interested in econ research. I'm currently exploring my interests within economics, 
-        partly through personal projects. Please view my work <a href="research.html">here.</a>
-    </p>
 
-    <h2>Resources</h2>
-    <p>Online resources I referenced while learning to code:</p>
-    <ul>
-        <li><a href="https://happygitwithr.com/" target="_blank">Happy Git and GitHub for the useR</a> —  Using Git and GitHub with R, Rstudio, and R Markdown</li>
-        <li><a href="https://r4ds.hadley.nz/" target="_blank">R for Data Science (2e)</a> — Import, Tidy, Transform, Visualize, and Model Data in R (Chapters 1-5)</li>
-        <li><a href="https://theeffectbook.net/" target="_blank">The Effect</a> —  An Introduction to Research Design and Causality</li>
-        <li><a href="https://www.predoc.org/for-undergraduates" target="_blank">Predoc.org</a></li>
-    </ul>
+    <hr class="top-rule">
+
+    <header class="profile-header">
+        <div class="intro">
+            <h1>Gregory Park</h1>
+            <p class="role">Economics &amp; Math</p>
+            <p class="role">University of Maryland, College Park</p>
+            <p class="role">Class of 2028</p>
+            <p class="contact"><a href="mailto:gpark445@terpmail.umd.edu">gpark445@terpmail.umd.edu</a></p>
+        </div>
+
+        <div class="photo-frame">
+            <img src="SRI_headshot.jpg" alt="Gregory Park"
+                 onerror="this.parentElement.classList.add('no-photo'); this.style.display='none';">
+            <span class="photo-placeholder">Drop a photo named<br><strong>profile.jpg</strong><br>in this folder<br>(roughly square works well here)</span>
+        </div>
+    </header>
+
+    <main>
+        <p>My name is Greg, and I am a sophomore at UMD interested in econ research. I'm currently exploring my interests within economics,
+            partly through personal projects. Please view my work <a href="research.html">here.</a>
+        </p>
+
+        <h2>Resources</h2>
+        <p>Online resources I referenced while learning to code:</p>
+        <ul>
+            <li><a href="https://happygitwithr.com/" target="_blank">Happy Git and GitHub for the useR</a> &mdash; Using Git and GitHub with R, Rstudio, and R Markdown</li>
+            <li><a href="https://r4ds.hadley.nz/" target="_blank">R for Data Science (2e)</a> &mdash; Import, Tidy, Transform, Visualize, and Model Data in R (Chapters 1-5)</li>
+            <li><a href="https://theeffectbook.net/" target="_blank">The Effect</a> &mdash; An Introduction to Research Design and Causality</li>
+            <li><a href="https://www.predoc.org/for-undergraduates" target="_blank">Predoc.org</a></li>
+        </ul>
+    </main>
+
+    <hr class="bottom-rule">
 
     <div class="links">
-        <a href="mailto:gpark445@terpmail.umd.edu">email</a>
         <a href="https://github.com/gregorypark" target="_blank">github</a>
         <a href="https://linkedin.com/in/gregory-park-b282703b8" target="_blank">linkedin</a>
     </div>
+
 </body>
 </html>
