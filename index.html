@@ -4,168 +4,92 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Gregory Park</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --bg:#ffffff;
-    --text:#23262b;
-    --muted:#6b7280;
-    --line:#e6e8ec;
-    --accent:#2a5bd7;
-    --soft:#f3f5f9;
-  }
-  *{ box-sizing:border-box; }
-  body{
-    font-family:'DM Sans', system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif;
-    max-width:680px;
-    margin:0 auto;
-    padding:56px 24px 64px;
-    line-height:1.65;
-    color:var(--text);
-    background:var(--bg);
-  }
-
-  /* header */
-  .profile-header{
-    display:flex;
-    align-items:center;
-    gap:28px;
-    margin-bottom:36px;
-  }
-  .photo-frame{
-    width:132px;
-    height:176px;
-    flex:0 0 auto;
-    border-radius:14px;
-    background:var(--soft);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    overflow:hidden;
-  }
-  .photo-frame img{ width:100%; height:100%; object-fit:cover; display:block; }
-  .photo-placeholder{ display:none; font-size:.72em; color:var(--muted); text-align:center; padding:12px; }
-  .photo-frame.no-photo .photo-placeholder{ display:block; }
-
-  h1{ font-size:2em; font-weight:700; letter-spacing:-.02em; line-height:1.15; margin:0 0 8px; }
-  .role{ margin:0; color:var(--muted); font-size:.98em; }
-  .contact{ margin:12px 0 0; font-size:.95em; }
-
-  a{ color:var(--accent); text-decoration:none; }
-  a:hover{ text-decoration:underline; text-underline-offset:3px; }
-  a:focus-visible, button:focus-visible{ outline:2px solid var(--accent); outline-offset:3px; border-radius:4px; }
-
-  /* tabs */
-  nav{
-    display:flex;
-    gap:24px;
-    border-bottom:1px solid var(--line);
-    margin-bottom:32px;
-    overflow-x:auto;
-  }
-  nav a, nav button{
-    font:inherit;
-    font-size:.98em;
-    color:var(--muted);
-    background:none;
-    border:none;
-    border-bottom:2px solid transparent;
-    padding:8px 0 10px;
-    margin-bottom:-1px;
-    cursor:pointer;
-    white-space:nowrap;
-  }
-  nav a:hover, nav button:hover{ color:var(--text); text-decoration:none; }
-  nav [aria-selected="true"]{ color:var(--text); font-weight:500; border-bottom-color:var(--accent); }
-
-  /* panels */
-  .panel[hidden]{ display:none; }
-  .panel p{ margin:0 0 18px; }
-  ul{ margin:0; padding-left:20px; }
-  li{ margin-bottom:10px; }
-  .note{ color:var(--muted); font-size:.92em; }
-
-  .links{ margin-top:56px; padding-top:20px; border-top:1px solid var(--line); display:flex; gap:20px; font-size:.9em; }
-  .links a{ color:var(--muted); }
-  .links a:hover{ color:var(--accent); }
-
-  @media (max-width:560px){
-    body{ padding-top:36px; }
-    .profile-header{ flex-direction:column; align-items:flex-start; gap:20px; }
-  }
+  body{font-family:Arial,Helvetica,sans-serif;max-width:680px;margin:0 auto;padding:48px 24px;line-height:1.6;color:#222}
+  a{color:#0066cc;text-decoration:none}
+  a:hover{text-decoration:underline}
+  h1{font-size:1.9em;margin:0 0 6px}
+  header{display:flex;align-items:center;gap:28px;margin-bottom:32px}
+  header p{margin:0;color:#555}
+  header .email{margin-top:10px}
+  .photo{width:132px;height:176px;flex:none;background:#f2f2f2;object-fit:cover}
+  nav{display:flex;gap:22px;border-bottom:1px solid #ddd;margin-bottom:24px}
+  nav a,nav button{font:inherit;color:#666;background:none;border:0;border-bottom:2px solid transparent;padding:6px 0 8px;margin-bottom:-1px;cursor:pointer}
+  nav .on{color:#222;font-weight:bold;border-color:#0066cc}
+  section[hidden]{display:none}
+  h3{font-size:1em;margin:16px 0 2px}
+  h3:first-child{margin-top:0}
+  ul{margin:0;padding-left:20px}
+  li{margin-bottom:3px}
+  footer{margin-top:48px;padding-top:16px;border-top:1px solid #ddd;font-size:.9em}
+  footer a{margin-right:16px;color:#777}
+  @media(max-width:560px){header{flex-direction:column;align-items:flex-start}}
 </style>
 </head>
 <body>
 
-<header class="profile-header">
-  <div class="photo-frame">
-    <img src="profile.jpg" alt="Gregory Park"
-         onerror="this.parentElement.classList.add('no-photo'); this.style.display='none';">
-    <span class="photo-placeholder">Add a photo named<br><strong>profile.jpg</strong><br>to this folder</span>
-  </div>
-  <div class="intro">
+<header>
+  <img class="photo" src="profile.jpg" alt="Gregory Park">
+  <div>
     <h1>Gregory Park</h1>
-    <p class="role">Economics &amp; Math</p>
-    <p class="role">University of Maryland, College Park</p>
-    <p class="role">Expected 2028</p>
-    <p class="contact"><a href="mailto:gpark445@terpmail.umd.edu">gpark445@terpmail.umd.edu</a></p>
+    <p>Economics &amp; Math</p>
+    <p>University of Maryland, College Park</p>
+    <p>Expected 2028</p>
+    <p class="email"><a href="mailto:gpark445@terpmail.umd.edu">gpark445@terpmail.umd.edu</a></p>
   </div>
 </header>
 
-<nav role="tablist" aria-label="Sections">
-  <button role="tab" id="tab-about" aria-controls="about" aria-selected="true">About</button>
+<nav>
+  <button data-tab="about" class="on">About</button>
   <a href="research.html">Research</a>
-  <button role="tab" id="tab-coursework" aria-controls="coursework" aria-selected="false">Coursework</button>
-  <button role="tab" id="tab-resources" aria-controls="resources" aria-selected="false">Resources</button>
+  <button data-tab="coursework">Coursework</button>
+  <button data-tab="resources">Resources</button>
 </nav>
 
-<main>
-  <section class="panel" id="about" role="tabpanel" aria-labelledby="tab-about">
-    <p>My name is Greg, and I am a junior at UMD interested in econ research.
-       I'm most excited by labor economics (education and families) and political economy.
-       Please view my work <a href="research.html">here.</a></p>
-  </section>
+<section id="about">
+  <p>My name is Greg, and I am a junior at UMD interested in econ research.
+     I'm most excited by labor economics (education and families) and political economy.
+     Please view my work <a href="research.html">here.</a></p>
+</section>
 
-  <section class="panel" id="coursework" role="tabpanel" aria-labelledby="tab-coursework" hidden>
-    <p class="note">Replace these with your own courses.</p>
-    <ul>
-      <li>Course name &ndash; short note (optional)</li>
-      <li>Course name &ndash; short note (optional)</li>
-      <li>Course name &ndash; short note (optional)</li>
-    </ul>
-  </section>
+<section id="coursework" hidden>
+  <h3>Fall 2026</h3>
+  <ul>
+    <li>Course</li>
+    <li>Course</li>
+  </ul>
+  <h3>Spring 2026</h3>
+  <ul>
+    <li>Course</li>
+    <li>Course</li>
+  </ul>
+</section>
 
-  <section class="panel" id="resources" role="tabpanel" aria-labelledby="tab-resources" hidden>
-    <p>Online resources I referenced while learning to code:</p>
-    <ul>
-      <li><a href="https://happygitwithr.com/" target="_blank" rel="noopener">Happy Git and GitHub for the useR</a> by Jenny Bryan</li>
-      <li><a href="https://r4ds.hadley.nz/" target="_blank" rel="noopener">R for Data Science (2e)</a> by Wickham, Çetinkaya-Rundel, and Grolemund</li>
-      <li><a href="https://theeffectbook.net/" target="_blank" rel="noopener">The Effect</a> by Nick Huntington-Klein</li>
-      <li><a href="https://mixtape.scunning.com/" target="_blank" rel="noopener">Causal Inference: The Mixtape</a> by Scott Cunningham</li>
-    </ul>
-  </section>
-</main>
+<section id="resources" hidden>
+  <p>Online resources I referenced while learning to code:</p>
+  <ul>
+    <li><a href="https://happygitwithr.com/" target="_blank">Happy Git and GitHub for the useR</a> by Jenny Bryan</li>
+    <li><a href="https://r4ds.hadley.nz/" target="_blank">R for Data Science (2e)</a> by Wickham, Çetinkaya-Rundel, and Grolemund</li>
+    <li><a href="https://theeffectbook.net/" target="_blank">The Effect</a> by Nick Huntington-Klein</li>
+    <li><a href="https://mixtape.scunning.com/" target="_blank">Causal Inference: The Mixtape</a> by Scott Cunningham</li>
+  </ul>
+</section>
 
-<div class="links">
-  <a href="https://github.com/gregorypark" target="_blank" rel="noopener">github</a>
-  <a href="https://linkedin.com/in/gregory-park-b282703b8" target="_blank" rel="noopener">linkedin</a>
-</div>
+<footer>
+  <a href="https://github.com/gregorypark" target="_blank">github</a>
+  <a href="https://linkedin.com/in/gregory-park-b282703b8" target="_blank">linkedin</a>
+</footer>
 
 <script>
-  const tabs = document.querySelectorAll('[role="tab"]');
-  function show(name){
+  const tabs = document.querySelectorAll('[data-tab]');
+  function show(id){
     tabs.forEach(t => {
-      const on = t.getAttribute('aria-controls') === name;
-      t.setAttribute('aria-selected', on);
-      document.getElementById(t.getAttribute('aria-controls')).hidden = !on;
+      t.classList.toggle('on', t.dataset.tab === id);
+      document.getElementById(t.dataset.tab).hidden = t.dataset.tab !== id;
     });
-    history.replaceState(null, '', name === 'about' ? location.pathname : '#' + name);
   }
-  tabs.forEach(t => t.addEventListener('click', () => show(t.getAttribute('aria-controls'))));
-  const start = location.hash.slice(1);
-  if (['coursework','resources'].includes(start)) show(start);
+  tabs.forEach(t => t.onclick = () => show(t.dataset.tab));
+  show(location.hash.slice(1) in {coursework:1, resources:1} ? location.hash.slice(1) : 'about');
 </script>
 </body>
 </html>
