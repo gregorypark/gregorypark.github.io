@@ -1,152 +1,171 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gregory Park</title>
-    <style>
-        body{
-            font-family:Georgia, 'Times New Roman', Times, serif;
-            max-width:750px;
-            margin:0 auto;
-            padding:0 40px 60px;
-            line-height:1.7;
-            color:#1a1a1a;
-            background:#FFFFFF;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gregory Park</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#ffffff;
+    --text:#23262b;
+    --muted:#6b7280;
+    --line:#e6e8ec;
+    --accent:#2a5bd7;
+    --soft:#f3f5f9;
+  }
+  *{ box-sizing:border-box; }
+  body{
+    font-family:'DM Sans', system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif;
+    max-width:680px;
+    margin:0 auto;
+    padding:56px 24px 64px;
+    line-height:1.65;
+    color:var(--text);
+    background:var(--bg);
+  }
 
-        .profile-header{
-            display:flex;
-            justify-content:center;
-            align-items:center;
-            gap:30px;
-            flex-wrap:wrap;
-            margin:55px 0 45px;
-        }
+  /* header */
+  .profile-header{
+    display:flex;
+    align-items:center;
+    gap:28px;
+    margin-bottom:36px;
+  }
+  .photo-frame{
+    width:132px;
+    height:176px;
+    flex:0 0 auto;
+    border-radius:14px;
+    background:var(--soft);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
+  }
+  .photo-frame img{ width:100%; height:100%; object-fit:cover; display:block; }
+  .photo-placeholder{ display:none; font-size:.72em; color:var(--muted); text-align:center; padding:12px; }
+  .photo-frame.no-photo .photo-placeholder{ display:block; }
 
-        .photo-frame{
-            width:180px;
-            height:240px;
-            flex:0 0 auto;
-            border:1px solid #ccc;
-            background:#f7f7f7;
-            display:flex;
-            align-items:center;
-            justify-content:center;
-            overflow:hidden;
-        }
-        .photo-frame img{
-            width:100%;
-            height:100%;
-            object-fit:cover;
-            display:block;
-        }
-        .photo-frame .photo-placeholder{
-            display:none;
-            font-size:0.75em;
-            color:#888;
-            text-align:center;
-            padding:14px;
-        }
-        .photo-frame.no-photo .photo-placeholder{ display:block; }
-        /* ===== end photo slot ===== */
+  h1{ font-size:2em; font-weight:700; letter-spacing:-.02em; line-height:1.15; margin:0 0 8px; }
+  .role{ margin:0; color:var(--muted); font-size:.98em; }
+  .contact{ margin:12px 0 0; font-size:.95em; }
 
-        .intro{ text-align:center; }
+  a{ color:var(--accent); text-decoration:none; }
+  a:hover{ text-decoration:underline; text-underline-offset:3px; }
+  a:focus-visible, button:focus-visible{ outline:2px solid var(--accent); outline-offset:3px; border-radius:4px; }
 
-        h1{
-            font-size:1.7em;
-            font-weight:400;
-            margin:0 0 10px;
-            color:#111;
-        }
-        .role{
-            margin:2px 0;
-            color:#333;
-            font-size:0.95em;
-        }
-        .contact{
-            margin-top:14px;
-            font-size:0.9em;
-        }
+  /* tabs */
+  nav{
+    display:flex;
+    gap:24px;
+    border-bottom:1px solid var(--line);
+    margin-bottom:32px;
+    overflow-x:auto;
+  }
+  nav a, nav button{
+    font:inherit;
+    font-size:.98em;
+    color:var(--muted);
+    background:none;
+    border:none;
+    border-bottom:2px solid transparent;
+    padding:8px 0 10px;
+    margin-bottom:-1px;
+    cursor:pointer;
+    white-space:nowrap;
+  }
+  nav a:hover, nav button:hover{ color:var(--text); text-decoration:none; }
+  nav [aria-selected="true"]{ color:var(--text); font-weight:500; border-bottom-color:var(--accent); }
 
-        main p{ margin-bottom:18px; }
+  /* panels */
+  .panel[hidden]{ display:none; }
+  .panel p{ margin:0 0 18px; }
+  ul{ margin:0; padding-left:20px; }
+  li{ margin-bottom:10px; }
+  .note{ color:var(--muted); font-size:.92em; }
 
-        a{
-            color:#0066cc;
-            text-decoration:none;
-            border-bottom:1px solid transparent;
-            transition:border-bottom 0.2s;
-        }
-        a:hover{ border-bottom:1px solid #0066cc; }
+  .links{ margin-top:56px; padding-top:20px; border-top:1px solid var(--line); display:flex; gap:20px; font-size:.9em; }
+  .links a{ color:var(--muted); }
+  .links a:hover{ color:var(--accent); }
 
-        ul{ margin:0; padding-left:20px; }
-        ul li{ margin-bottom:6px; }
-
-        .links{
-            text-align:right;
-            margin-top:50px;
-        }
-        .links a{
-            margin-left:18px;
-            font-weight:400;
-            font-size:0.82em;
-            color:#888;
-        }
-        .links a:hover{ border-bottom:1px solid #888; }
-
-        @media (max-width:560px){
-            .profile-header{ flex-direction:column; }
-            .photo-frame{ width:150px; height:200px; }
-        }
-
-        hr {
-          border: none;           
-          height: 1px;            /* The thickness of the line */
-          background-color: #DCD7CD; /* A warm, grayish-beige color */
-          margin: 30px 0;      
-          width: 750px;      
-        }
-    </style>
+  @media (max-width:560px){
+    body{ padding-top:36px; }
+    .profile-header{ flex-direction:column; align-items:flex-start; gap:20px; }
+  }
+</style>
 </head>
 <body>
 
-    <header class="profile-header">
-        <div class="intro">
-            <h1>Gregory Park</h1>
-            <p class="role">Economics &amp; Math</p>
-            <p class="role">University of Maryland, College Park</p>
-            <p class="role">Expected 2028</p>
-            <p class="contact"><a href="mailto:gpark445@terpmail.umd.edu">gpark445@terpmail.umd.edu</a></p>
-        </div>
+<header class="profile-header">
+  <div class="photo-frame">
+    <img src="profile.jpg" alt="Gregory Park"
+         onerror="this.parentElement.classList.add('no-photo'); this.style.display='none';">
+    <span class="photo-placeholder">Add a photo named<br><strong>profile.jpg</strong><br>to this folder</span>
+  </div>
+  <div class="intro">
+    <h1>Gregory Park</h1>
+    <p class="role">Economics &amp; Math</p>
+    <p class="role">University of Maryland, College Park</p>
+    <p class="role">Expected 2028</p>
+    <p class="contact"><a href="mailto:gpark445@terpmail.umd.edu">gpark445@terpmail.umd.edu</a></p>
+  </div>
+</header>
 
-        <div class="photo-frame">
-            <img src="profile.jpg" alt="Gregory Park"
-                 onerror="this.parentElement.classList.add('no-photo'); this.style.display='none';">
-            <span class="photo-placeholder">Drop a photo named<br><strong>profile.jpg</strong><br>in this folder<br>(portrait crop works well here)</span>
-        </div>
-    </header>
+<nav role="tablist" aria-label="Sections">
+  <button role="tab" id="tab-about" aria-controls="about" aria-selected="true">About</button>
+  <a href="research.html">Research</a>
+  <button role="tab" id="tab-coursework" aria-controls="coursework" aria-selected="false">Coursework</button>
+  <button role="tab" id="tab-resources" aria-controls="resources" aria-selected="false">Resources</button>
+</nav>
 
-    <main>
-        <p>My name is Greg, and I am a junior at UMD interested in econ research. 
-            I'm most excited by labor economics (education and families) and political economy.
-            Please view my work <a href="research.html">here.</a>
-        </p>
+<main>
+  <section class="panel" id="about" role="tabpanel" aria-labelledby="tab-about">
+    <p>My name is Greg, and I am a junior at UMD interested in econ research.
+       I'm most excited by labor economics (education and families) and political economy.
+       Please view my work <a href="research.html">here.</a></p>
+  </section>
 
-        <hr>
+  <section class="panel" id="coursework" role="tabpanel" aria-labelledby="tab-coursework" hidden>
+    <p class="note">Replace these with your own courses.</p>
+    <ul>
+      <li>Course name &ndash; short note (optional)</li>
+      <li>Course name &ndash; short note (optional)</li>
+      <li>Course name &ndash; short note (optional)</li>
+    </ul>
+  </section>
 
-        <p>Online resources I referenced while learning to code:</p>
-        <ul>
-            <li><a href="https://happygitwithr.com/" target="_blank">Happy Git and GitHub for the useR</a> by Jenny Bryan</li>
-            <li><a href="https://r4ds.hadley.nz/" target="_blank">R for Data Science (2e)</a> by Wickham, Çetinkaya-Rundel, and Grolemund</li>
-            <li><a href="https://theeffectbook.net/" target="_blank">The Effect</a> by Nick Huntington-Klein</li>
-            <li><a href="https://mixtape.scunning.com/" target="_blank">Causal Inference: The Mixtape</a> by Scott Cunningham</li>
-        </ul>
-    </main>
+  <section class="panel" id="resources" role="tabpanel" aria-labelledby="tab-resources" hidden>
+    <p>Online resources I referenced while learning to code:</p>
+    <ul>
+      <li><a href="https://happygitwithr.com/" target="_blank" rel="noopener">Happy Git and GitHub for the useR</a> by Jenny Bryan</li>
+      <li><a href="https://r4ds.hadley.nz/" target="_blank" rel="noopener">R for Data Science (2e)</a> by Wickham, Çetinkaya-Rundel, and Grolemund</li>
+      <li><a href="https://theeffectbook.net/" target="_blank" rel="noopener">The Effect</a> by Nick Huntington-Klein</li>
+      <li><a href="https://mixtape.scunning.com/" target="_blank" rel="noopener">Causal Inference: The Mixtape</a> by Scott Cunningham</li>
+    </ul>
+  </section>
+</main>
 
-    <div class="links">
-        <a href="https://github.com/gregorypark" target="_blank">github</a>
-        <a href="https://linkedin.com/in/gregory-park-b282703b8" target="_blank">linkedin</a>
-    </div>
+<div class="links">
+  <a href="https://github.com/gregorypark" target="_blank" rel="noopener">github</a>
+  <a href="https://linkedin.com/in/gregory-park-b282703b8" target="_blank" rel="noopener">linkedin</a>
+</div>
 
+<script>
+  const tabs = document.querySelectorAll('[role="tab"]');
+  function show(name){
+    tabs.forEach(t => {
+      const on = t.getAttribute('aria-controls') === name;
+      t.setAttribute('aria-selected', on);
+      document.getElementById(t.getAttribute('aria-controls')).hidden = !on;
+    });
+    history.replaceState(null, '', name === 'about' ? location.pathname : '#' + name);
+  }
+  tabs.forEach(t => t.addEventListener('click', () => show(t.getAttribute('aria-controls'))));
+  const start = location.hash.slice(1);
+  if (['coursework','resources'].includes(start)) show(start);
+</script>
 </body>
 </html>
