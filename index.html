@@ -21,6 +21,13 @@
   h3:first-child{margin-top:0}
   ul{margin:0;padding-left:20px}
   li{margin-bottom:3px}
+  .project{margin-bottom:24px}
+  .project h3{margin:0}
+  .project p{margin:2px 0}
+  .sem{color:#666}
+  .abs{font-size:.88em;color:#444}
+  .plinks{font-size:.88em}
+  .plinks a{margin-right:12px}
   footer{margin-top:48px;padding-top:16px;border-top:1px solid #ddd;font-size:.9em}
   footer a{margin-right:16px;color:#777}
   @media(max-width:560px){header{flex-direction:column;align-items:flex-start}}
@@ -41,15 +48,23 @@
 
 <nav>
   <button data-tab="about" class="on">About</button>
-  <a href="research.html">Research</a>
+  <button data-tab="research">Research</button>
   <button data-tab="coursework">Coursework</button>
   <button data-tab="resources">Resources</button>
 </nav>
 
 <section id="about">
   <p>My name is Greg, and I am a junior at UMD interested in econ research.
-     I'm most excited by labor economics (education and families) and political economy.
-     Please view my work <a href="research.html">here.</a></p>
+     I'm most excited by labor economics (education and families) and political economy.</p>
+</section>
+
+<section id="research" hidden>
+  <div class="project">
+    <h3>Project title</h3>
+    <p class="sem">Fall 2026</p>
+    <p class="abs">Short abstract goes here.</p>
+    <p class="plinks"><a href="#" target="_blank">github</a> <a href="#" target="_blank">paper</a></p>
+  </div>
 </section>
 
 <section id="coursework" hidden>
@@ -89,7 +104,7 @@
     });
   }
   tabs.forEach(t => t.onclick = () => show(t.dataset.tab));
-  show(location.hash.slice(1) in {coursework:1, resources:1} ? location.hash.slice(1) : 'about');
+  show(location.hash.slice(1) in {research:1, coursework:1, resources:1} ? location.hash.slice(1) : 'about');
 </script>
 </body>
 </html>
